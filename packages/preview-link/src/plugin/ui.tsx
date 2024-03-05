@@ -1,9 +1,9 @@
-import { PluginElementRenderProps } from '@yoopta/editor';
+import { PluginElementRenderProps, useYooptaPluginOptions } from '@yoopta/editor';
 import { useEffect, useState } from 'react';
 import { PreviewLinkElementProps } from '../types';
-import { fetcher } from './fetcher';
 
 const PreviewLinkRender = (props: PluginElementRenderProps) => {
+  const options = useYooptaPluginOptions('PreviewLink');
   const [data, setData] = useState<PreviewLinkElementProps | null>(null);
 
   if (!props.element.props?.url) {
@@ -11,7 +11,8 @@ const PreviewLinkRender = (props: PluginElementRenderProps) => {
   }
 
   useEffect(() => {
-    fetcher(props.element.props?.url)
+    options
+      .fetcher(props.element.props?.url)
       .then((d) => setData(d))
       .catch((e) => console.error('Error fetching data', e));
   }, [props.element.props?.url]);

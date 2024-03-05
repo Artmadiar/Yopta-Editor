@@ -1,9 +1,10 @@
-import { createYooptaPlugin } from '@yoopta/editor';
+import { YooptaPlugin } from '@yoopta/editor';
 import { PreviewLinkRender } from './ui';
 import { fetcher } from './fetcher';
+import { PreviewPluginOptions, PreviewLinkElementKeys, PreviewLinkElementProps } from '../types';
 
-export const PreviewLink = createYooptaPlugin({
-  type: 'preview-link',
+export const PreviewLink = new YooptaPlugin<PreviewLinkElementKeys, PreviewLinkElementProps, PreviewPluginOptions>({
+  type: 'PreviewLink',
   elements: {
     'preview-link': {
       render: PreviewLinkRender,
@@ -12,10 +13,10 @@ export const PreviewLink = createYooptaPlugin({
         title: 'empty',
         url: 'https://google.com',
       },
-      options: {
-        draggable: true,
-        fetcher,
-      },
     },
+  },
+  options: {
+    draggable: true,
+    fetcher,
   },
 });
