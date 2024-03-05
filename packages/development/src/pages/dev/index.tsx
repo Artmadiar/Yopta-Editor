@@ -10,6 +10,7 @@ import Link from '@yoopta/link';
 import Video from '@yoopta/video';
 import Table from '@yoopta/table';
 import { Bold, Italic, Highlight, CodeMark, Strike, Underline } from '@yoopta/marks';
+import PreviewLink from '@yoopta/preview-link';
 // import Code from '@yoopta/code';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { uploadToCloudinary } from '../../utils/cloudinary';
@@ -60,6 +61,7 @@ const plugins = [
   }),
   Mention,
   Link,
+  PreviewLink,
 ];
 
 const MARKS = [Bold, Italic, Highlight, CodeMark, Strike, Underline];
